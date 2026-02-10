@@ -7,7 +7,7 @@ import lombok.*;
 @Getter @Setter
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 public class ProductDto {
     private Long id;
     private String name;
@@ -15,13 +15,16 @@ public class ProductDto {
     private Double price;
     private Long categoryId;
 
-//    public ProductDto(Long id, String name, String description, Double price, Long id1) {
-//        this.id=id;
-//        this.name=name;
-//        this.description=description;
-//        this.price=price;
-//        this.categoryId=id1;
-//    }
+
+
+
+    public ProductDto(Long id, String name, String description, Double price, Long id1) {
+        this.id=id;
+        this.name=name;
+        this.description=description;
+        this.price=price;
+        this.categoryId=id1;
+    }
 
 
     public Long getId() {

@@ -3,7 +3,9 @@ package com.Shiva.Product.Mapper;
 import com.Shiva.Product.Dto.ProductDto;
 import com.Shiva.Product.Entity.Category;
 import com.Shiva.Product.Entity.Product;
+import lombok.AllArgsConstructor;
 
+//@AllArgsConstructor
 public class ProductMapper {
 
     //entity to dto
