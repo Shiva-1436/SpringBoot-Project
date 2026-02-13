@@ -1,6 +1,7 @@
 package com.Shiva.Product.Controller;
 
 import com.Shiva.Product.Dto.CategoryDto;
+import com.Shiva.Product.Exception.CategoryAlreadyExistsException;
 import com.Shiva.Product.Service.CategoryService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,19 @@ public class CategoryController {
     private CategoryService categoryService;
     //create categories
     @PostMapping
-    public ResponseEntity<CategoryDto> createproduct(@RequestBody CategoryDto categoryDto){
-        return new ResponseEntity<>(categoryService.create(categoryDto), HttpStatus.CREATED);
+//    public ResponseEntity<CategoryDto> createproduct(@RequestBody CategoryDto categoryDto){
+//        return new ResponseEntity<>(categoryService.create(categoryDto), HttpStatus.CREATED);
+//    }
+    public ResponseEntity<?> createproduct(@RequestBody CategoryDto categoryDto){
+//        try {
+//            CategoryDto categoryDto1=categoryService.create(categoryDto);
+//            return ResponseEntity.status(HttpStatus.CREATED).body(categoryDto1);
+//        }
+//        catch (CategoryAlreadyExistsException ex){
+//            return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
+//        }
+        CategoryDto categoryDto1=categoryService.create(categoryDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoryDto1);
     }
 
     //get categories

@@ -4,6 +4,7 @@ package com.Shiva.Product.Service;
 import com.Shiva.Product.Dto.ProductDto;
 import com.Shiva.Product.Entity.Category;
 import com.Shiva.Product.Entity.Product;
+import com.Shiva.Product.Exception.CategoryNotFoundException;
 import com.Shiva.Product.Mapper.ProductMapper;
 import com.Shiva.Product.Repository.CategoryRepository;
 import com.Shiva.Product.Repository.ProductRepository;
@@ -21,7 +22,9 @@ public class ProductService {
     //create
     public ProductDto create(ProductDto productDto){
         Category category=categoryRepository.findById(productDto.getCategoryId()).
-                orElseThrow(() -> new RuntimeException("category not found"));
+                orElseThrow(() -> new CategoryNotFoundException("category "
+                        +productDto.getCategoryId()+" not found"));
+
         Product product= ProductMapper.toproductEntity(productDto,category);
         product=productRepository.save(product);
         return ProductMapper.toproductDto(product);
