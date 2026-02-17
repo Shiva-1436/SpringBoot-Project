@@ -3,6 +3,7 @@ package com.Shiva.Product.Controller;
 import com.Shiva.Product.Dto.CategoryDto;
 import com.Shiva.Product.Exception.CategoryAlreadyExistsException;
 import com.Shiva.Product.Service.CategoryService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+
+@Tag(
+        name = "Category RestAPI CRUD Operations",
+        description = "create delete get update operations perform here for category"
+)
 
 @RestController
 @RequestMapping("/api/categories")
