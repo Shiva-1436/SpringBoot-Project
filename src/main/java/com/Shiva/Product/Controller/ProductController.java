@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,12 +46,16 @@ public class ProductController {
     }
 
     //delete product
+
+    @PreAuthorize("hasAuthority('ROLE_SELLER')")
     @DeleteMapping("/{id}")
     public String deleteproduct(@PathVariable Long id){
         return productService.deleteproduct(id);
     }
 
     //update product
+    @PreAuthorize("hasAuthority('ROLE_SELLER')")
+
     @PutMapping("/{id}")
     public ProductDto updateproduct(@PathVariable Long id , @RequestBody ProductDto productDto){
         return productService.updateproduct(id,productDto);
